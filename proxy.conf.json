@@ -1,0 +1,18 @@
+{
+    "/add_link/*": {
+        "target": "http://addcalculator-env.ap-south-1.elasticbeanstalk.com",
+        "secure": false,
+        "pathRewrite": {
+            "^/add_link": ""
+        },
+        "logLevel": "debug"
+    },
+    "/subtract_link/*": {
+        "target": "http://subtractcalculator-env.ap-south-1.elasticbeanstalk.com",
+        "secure": false,
+        "pathRewrite": {
+            "^/subtract_link": ""
+        },
+        "logLevel": "debug"
+    }
+}
