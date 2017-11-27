@@ -14,5 +14,13 @@
             "^/subtract_link": ""
         },
         "logLevel": "debug"
+    },
+    "/localhost/*": {
+        "target": "",
+        "secure": false,
+        "pathRewrite": {
+            "^/subtract_link": ""
+        },
+        "logLevel": "debug"
     }
 }

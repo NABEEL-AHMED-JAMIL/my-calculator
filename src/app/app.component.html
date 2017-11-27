@@ -1,4 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!-- The content below is only a placeholder and can be replaced. -->
 <div style="text-align:center">
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
@@ -34,14 +34,17 @@
             </button>
                 </div>
             </div>
-
-
-            <!-- SUPERHERO NAME -->
             <div class="form-group">
                 <label>Result</label>
                 <input type="text" name="result" class="form-control" placeholder="User Input Result" [(ngModel)]="result">
                 <span class="help-block"></span>
             </div>
+            <!-- SUPERHERO NAME -->
+            <!-- <div style="margin: inherit;">
+                <re-captcha site_key="6LcBDToUAAAAAPISZfty0xdxYLPnD_YH3I2Pod8l" (captchaResponse)="handleCorrectCaptcha($event)"></re-captcha>
+            </div> -->
+            <!-- <a href="javascript:;" class="warn" (click)="restCaptach()"> Not verify (Click here again to verify)</a> -->
+            <div class="g-recaptcha" data-sitekey="6LcBDToUAAAAAPISZfty0xdxYLPnD_YH3I2Pod8l"></div>
 
         </div>
     </div>

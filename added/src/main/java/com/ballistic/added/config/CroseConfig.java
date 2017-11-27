@@ -1,6 +1,8 @@
 package com.ballistic.added.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -16,4 +18,9 @@ public class CroseConfig extends WebMvcConfigurerAdapter {
                 .allowedMethods("PUT", "DELETE", "GET", "POST","HEAD", "DELETE", "PATCH", "OPTIONS");
         //.allowedOrigins("http://localhost:4200");
     }
+
+  @Bean
+  public RestTemplate restTemplate() {
+    return new RestTemplate();
+  }
 }

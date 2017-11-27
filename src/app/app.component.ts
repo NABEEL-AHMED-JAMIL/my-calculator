@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OperationService } from './app.service';
-
+import { ReCaptchaComponent } from 'angular2-recaptcha';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { OperationService } from './app.service';
 })
 export class AppComponent {
 
+  @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
   public firstNumber:any;
   public secondNumber:any;
   public result: any;
@@ -17,7 +19,7 @@ export class AppComponent {
 
   public add(): any{
 
-    if(this.isNotNull()){    
+    if(this.isNotNullOrNaN()){
       this.op_service.getOperationNumber(this.firstNumber,this.secondNumber, '+').
         subscribe(result => {
           console.log(result);
@@ -30,11 +32,10 @@ export class AppComponent {
   }
 
   public subtract(): any{
-    
-    if(this.isNotNull()){
-    
-      this.op_service.
-        getOperationNumber(this.firstNumber,this.secondNumber, '-').
+
+    if(this.isNotNullOrNaN()){
+
+      this.op_service.getOperationNumber(this.firstNumber,this.secondNumber, '-').
           subscribe(result => {
             console.log(result);
             this.result = result;
@@ -44,7 +45,7 @@ export class AppComponent {
     }
   }
 
-  public isNotNull(): any{
+  public isNotNullOrNaN(): any{
     if(this.firstNumber != null && this.secondNumber != null){
       if(!isNaN(this.firstNumber) && !isNaN(this.secondNumber)){
         return true;
@@ -52,5 +53,17 @@ export class AppComponent {
     }
   }
 
+  public handleCorrectCaptcha($event) {
+    let token = this.captcha.getResponse();
+    this.op_service.login(token).subscribe(result => {
+      console.log(result);
+      this.result = result;
+    });
+  }
+
+  public restCaptach() {
+    
+    this.captcha.reset();
+  }
 
 }
